@@ -4,21 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-class Petugas extends Authenticatable
+class Manager extends Model
 {
-    use HasFactory, Notifiable;
-    protected $guard = 'petugas';
-    protected $table = 'petugas';
+    use HasFactory;
+    protected $table = 'manager';
     protected $fillable = [
         'id_user',
         'nama_user',
         'username',
         'password',
-        'level_id',
-        'email',
+        'level',
     ];
     public $timestamps = false;
 }

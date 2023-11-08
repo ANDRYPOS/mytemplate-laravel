@@ -8,15 +8,15 @@
                 <div
                     class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                     <a class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
-                        href="{{ url('insert-customer') }}">
+                        href="{{ url('insert-sales') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                             viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                             <path
                                 d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                        </svg> Insert Customer
+                        </svg> Insert Sales
                     </a>
                     <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <h6>Customer table</h6>
+                        <h6>Sales table</h6>
                     </div>
 
                     <div class="flex-auto px-0 pt-0 pb-2">
@@ -26,22 +26,19 @@
                                     <tr>
                                         <th
                                             class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            No Customer</th>
+                                            No Sales</th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Nama Customer</th>
+                                            Tanggal Sales</th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Alamat</th>
+                                            Customer</th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Telp</th>
+                                            Nomor DO</th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Fax</th>
-                                        <th
-                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Email</th>
+                                            Status</th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Action
@@ -49,13 +46,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($data as $datas)
+                                    @forelse ($sales as $datasales)
                                         <tr>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <div class="flex px-2 py-1">
                                                     <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 text-sm leading-normal">{{ $datas->id_customer }}
+                                                        <h6 class="mb-0 text-sm leading-normal">{{ $datasales->id_sales }}
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -63,36 +60,31 @@
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <p class="mb-0 text-xs font-semibold leading-tight">
-                                                    {{ $datas->nama_customer }}</p>
+                                                    {{ $datasales->tgl_sales }}</p>
 
                                             </td>
                                             <td
                                                 class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <span
-                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datas->alamat }}</span>
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datasales->customer->nama_customer }}</span>
                                             </td>
                                             <td
                                                 class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <span
-                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datas->telp }}</span>
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datasales->do_number }}</span>
                                             </td>
                                             <td
                                                 class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <span
-                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datas->fax }}</span>
-                                            </td>
-                                            <td
-                                                class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <span
-                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datas->email }}</span>
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $datasales->status }}</span>
                                             </td>
 
                                             <td
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <a class="text-xs font-semibold leading-tight text-slate-400 bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white"
-                                                    href="/edit-customer/{{ $datas->id_customer }}" role="button">Edit</a>
+                                                    href="/edit-sales/{{ $datasales->id_sales }}" role="button">Edit</a>
                                                 <a class="text-xs font-semibold leading-tight text-slate-400 bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white"
-                                                    href="/destroy-customer/{{ $datas->id_customer }}"
+                                                    href="/destroy-sales/{{ $datasales->id_sales }}"
                                                     onclick="return confirm('Hapus Data ini sekarang?')">Delete</a>
                                             </td>
                                         </tr>

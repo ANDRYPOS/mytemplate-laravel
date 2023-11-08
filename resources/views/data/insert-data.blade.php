@@ -70,7 +70,9 @@
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-last-name" type="text" name="name">
-
+                        @error('name')
+                            <small class="text-red-600 font-bold">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     {{-- description --}}
@@ -82,7 +84,9 @@
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-last-name" type="text" name="alamat">
-
+                        @error('alamat')
+                            <small class="text-red-600 font-bold">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-2"
@@ -92,7 +96,9 @@
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-last-name" type="text" name="email">
-
+                        @error('email')
+                            <small class="text-red-600 font-bold">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
 
@@ -107,7 +113,9 @@
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-first-name" type="text" name="tlp">
-
+                        @error('tlp')
+                            <small class="text-red-600 font-bold">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -117,47 +125,14 @@
                         <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-first-name" type="text" name="fax">
-
+                        @error('fax')
+                            <small class="text-red-600 font-bold">{{ $message }}</small>
+                        @enderror
                     </div>
-
-
                 </div>
-
-
                 <input type="submit" value="submit"
                     class="text-xs cursor-pointer mt-2 font-semibold leading-tight text-slate-400 bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
             </form>
         </a>
     </div>
-    <!-- component -->
-    <script>
-        function fileSelected(event) {
-            const textBefore = document.getElementById("blmupload");
-            const textAfter = document.getElementById("sdhupload");
-            const fileNameDisplay = document.querySelector(".file-name-display");
-            const imagePreview = document.getElementById("image-preview");
-            const previewImage = document.getElementById("preview-image");
-
-            if (event.target.files && event.target.files.length > 0) {
-                const selectedFile = event.target.files[0];
-                textBefore.style.display = "none";
-                textAfter.style.display = "block";
-                fileNameDisplay.textContent = selectedFile.name;
-                fileNameDisplay.style.fontWeight = "bold";
-
-                const fileReader = new FileReader();
-
-                fileReader.onload = function(e) {
-                    imagePreview.style.display = "block";
-                    previewImage.src = e.target.result;
-                };
-
-                fileReader.readAsDataURL(selectedFile);
-            } else {
-                fileNameDisplay.textContent = "";
-                imagePreview.style.display = "none";
-                previewImage.src = "";
-            }
-        }
-    </script>
 @endsection

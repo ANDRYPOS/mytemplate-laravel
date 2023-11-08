@@ -31,6 +31,25 @@ class DataController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Cannot be empty!',
+            'min' => 'Minimum 2 characters',
+            'numeric' => 'Must contain numbers',
+            'mimes' => 'File format not found : jpeg,png,jpg',
+            'max' => 'Maximum 2 MB'
+        ];
+
+        $request->validate(
+            [
+                'name' => 'required',
+                'alamat' => 'required|min:2',
+                'tlp' => 'required|min:2',
+                'fax' => 'required|numeric',
+                'email' => 'required|unique:customer,email',
+                'id_customer' => 'required',
+            ],
+            $message
+        );
 
         /* dd($request->all()); */
         // ambil request input
@@ -73,6 +92,7 @@ class DataController extends Controller
     // update
     public function update(Request $request)
     {
+
 
         // get user berdasarkan id
         $users = Customer::where('id_customer', $request->id_customer)->first();

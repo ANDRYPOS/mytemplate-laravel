@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,11 +37,19 @@ Route::middleware(['auth'])->group(function () {
     // dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    // data
+    // customer
     Route::get('/data-customer', [DataController::class, 'customer'])->name('view-data');
     Route::get('/insert-customer', [DataController::class, 'insert'])->name('view-data');
     Route::post('/store-customer', [DataController::class, 'store'])->name('view-data');
     Route::get('/edit-customer/{id}', [DataController::class, 'edit'])->name('view-data');
     Route::put('/update-customer', [DataController::class, 'update'])->name('report-data');
     Route::get('/destroy-customer/{id}', [DataController::class, 'destroy'])->name('report-data');
+
+    // sales
+    Route::get('/sales', [SalesController::class, 'sales'])->name('view-sales');
+    Route::get('/insert-sales', [SalesController::class, 'insert'])->name('view-sales');
+    Route::post('/store-sales', [SalesController::class, 'store'])->name('view-sales');
+    Route::get('/edit-sales/{id}', [SalesController::class, 'edit'])->name('view-sales');
+    Route::put('/update-sales', [SalesController::class, 'update'])->name('view-sales');
+    Route::get('/destroy-sales/{id}', [SalesController::class, 'destroy'])->name('view-sales');
 });

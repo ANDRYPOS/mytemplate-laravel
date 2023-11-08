@@ -19,7 +19,7 @@ class PetugasSeeder extends Seeder
             'nama_user' => 'andri',
             'username' => 'andri',
             'password' => Hash::make('passw'),
-            'level_id' => 1,
+            'level' => 1,
         ]);
     }
 }

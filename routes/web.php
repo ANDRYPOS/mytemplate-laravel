@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
@@ -52,4 +53,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-sales/{id}', [SalesController::class, 'edit'])->name('view-sales');
     Route::put('/update-sales', [SalesController::class, 'update'])->name('view-sales');
     Route::get('/destroy-sales/{id}', [SalesController::class, 'destroy'])->name('view-sales');
+
+    // item
+    Route::get('/item', [ItemController::class, 'item'])->name('view-item');
+    Route::get('/insert-item', [ItemController::class, 'insert'])->name('view-item');
+    Route::post('/store-item', [ItemController::class, 'store'])->name('view-item');
+    Route::get('/edit-item/{id}', [ItemController::class, 'edit'])->name('view-item');
+    Route::put('/update-item', [ItemController::class, 'update'])->name('view-item');
+    Route::get('/destroy-item/{id}', [ItemController::class, 'destroy'])->name('view-item');
 });
